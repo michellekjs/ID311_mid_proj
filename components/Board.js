@@ -13,7 +13,6 @@ class Cells {
 
   draw() {
     this.setup()
-    
   }
 }
 
