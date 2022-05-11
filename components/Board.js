@@ -1,33 +1,39 @@
 class Cells {
   constructor(px, py) {
-    this.type = "base",
+    this.game = "base"
     this.py = py,
     this.px = px
   }
+  setup() {
+    fill(168,215,241)
+    stroke(255,255,255)
+    strokeWeight(3)
+    rect(this.px * 80, this.py * 80, 80, 80)
+  }
+
   draw() {
-    rect(px * 10, py*10, 10 , 10 )
+    this.setup()
+    
   }
 }
-
-
 
 
 class Board {
   constructor(sizex, sizey) {
-    this.cells = []
+    this.cells = [],
     this.sizex = sizex,
     this.sizey = sizey
   }
 
-  draw() {
-    for (let a; a<=this.sizex ; a++){
-      for (let b; b<=this.sizey ; b++) {
-        const newcell = new Cells(a,b)
+  setup() {
+    for (let a=0; a<this.sizex ; a++){
+      for (let b=0; b<this.sizey ; b++) {
+        const newcell = new Cells(a,b);
+        this.cells.push(newcell);
         newcell.draw();
       }
     }
   }
-
 }
 
-export { Board, Cells };
+export {Board};
