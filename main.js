@@ -1,5 +1,7 @@
 import { Board } from './components/Board.js';
 import { PlayerBoard } from './components/PlayerBoard.js'
+// import { IntroPage } from './components/Introduction.js';
+
 
 function setup() {
   createCanvas(800,800)
@@ -7,8 +9,8 @@ function setup() {
 
 function draw(){
   let board = new Board(8,8);
-  board.setup();
   let scoreboard = new PlayerBoard("Tom","Jerry");
+  board.setup();
   scoreboard.draw();
 }
 
