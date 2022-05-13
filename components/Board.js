@@ -54,14 +54,14 @@ class Board {
     }
 
     const rcp = jumpCell.slice(12,14); 
-    for (let cell=0; cell<6 ; cell++) {
-      rcp[cell].game = "rcp" // this is rock scissor paper
-    }
+    // for (let cell=0; cell<6 ; cell++) {
+    //   rcp[cell].game = "rcp" // this is rock scissor paper
+    // }
 
     const spaceship = jumpCell.slice(14,16); 
-    for (let cell=0; cell<6 ; cell++) {
-      spaceship[cell].game = "spaceship" // this is rock scissor paper
-    }
+    // for (let cell=0; cell<6 ; cell++) {
+    //   spaceship[cell].game = "spaceship" // this is rock scissor paper
+    // }
 
     localStorage.setItem("cells", JSON.stringify(this.cells)); 
   }

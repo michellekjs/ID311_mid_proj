@@ -1,11 +1,4 @@
-class Player {
-  constructor (name) {
-    this.name = name,
-    this.score = 0,
-    this.current = false,
-    this.icon = ""
-  }
-}
+import { Player } from "./Introduction.js";
 
 class PlayerBoard{
   constructor(player1,player2) {
@@ -23,6 +16,7 @@ class PlayerBoard{
     textFont('Arial');
     if (this.p1.current == true) {
       fill(95,116,202);
+      // console.log(this.p1)
       text(this.p1.name + 'Score:' + this.p1.score,600 ,10, 30)
       fill(100,100,100);
       text(this.p2.name + 'Score:'+ this.p2.score,600 ,50, 30)
@@ -38,4 +32,4 @@ class PlayerBoard{
   }
 } 
 
-export {PlayerBoard, Player}
+export {PlayerBoard}
