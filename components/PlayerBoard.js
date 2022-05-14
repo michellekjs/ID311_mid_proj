@@ -1,9 +1,15 @@
 import { Player } from "./Introduction.js";
 
+let font;
+
 class PlayerBoard{
   constructor(player1,player2) {
     this.p1 = player1
     this.p2 = player2
+  }
+
+  preload(){
+    font = loadFont('../assets/fonts/coolveticarg.otf');
   }
 
   setup() {
@@ -13,7 +19,7 @@ class PlayerBoard{
 
   draw(){
     textSize(30);
-    textFont('Arial');
+    textFont(font);
     if (this.p1.current == true) {
       fill(95,116,202);
       // console.log(this.p1)

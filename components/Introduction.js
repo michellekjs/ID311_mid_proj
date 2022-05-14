@@ -94,10 +94,10 @@ function draw(){
   text(p2txt, windowWidth*2/3, 200)
 
   button = createButton('');
-  
+
   button.position(windowWidth/2, 400);
   button.style('border-style', 'none')
-  button.style('background-color', "none")
+  button.style('background', "none")
   button.style('width', "50px")
   button.style('height', "50px")
   button.mousePressed(changePlayer);

@@ -51,7 +51,7 @@ class Board {
       }
     }
     //jumping to certain positions
-    const jumpCell = this.cells.sort(()=>0.5 - Math.random());
+    const jumpCell = this.cells.slice(1,).sort(()=>0.5 - Math.random());
     const jumping = jumpCell.slice(0,6);
     for (let cell=0; cell<6 ; cell++) {
       
