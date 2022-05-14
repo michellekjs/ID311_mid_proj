@@ -23,15 +23,15 @@ class PlayerBoard{
     if (this.p1.current == true) {
       fill(95,116,202);
       // console.log(this.p1)
-      text(this.p1.name + 'Score:' + this.p1.score,windowWidth-200 ,10, 30)
+      text(this.p1.name + 'Score:' + this.p1.score,windowWidth-200 ,50, 30)
       fill(100,100,100);
-      text(this.p2.name + 'Score:'+ this.p2.score,windowWidth-200 ,50, 30)
+      text(this.p2.name + 'Score:'+ this.p2.score,windowWidth-200 ,80, 30)
     }
     else {
       fill(100,100,100);
-      text(this.p1.name + 'Score:' + this.p1.score,800 ,10, 30)
+      text(this.p1.name + 'Score:' + this.p1.score,windowWidth-200 ,50, 30)
       fill(95,116,202);
-      text(this.p2.name + 'Score:'+ this.p2.score,800 ,50, 30)
+      text(this.p2.name + 'Score:'+ this.p2.score,windowWidth-200 ,80, 30)
     }
   }
 } 

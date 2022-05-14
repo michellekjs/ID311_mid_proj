@@ -24,24 +24,25 @@ function setup() {
   scoreboard.setup();
 
   header = new Header();
-  board = new Board(8,8);
+  board = new Board(8,8); 
   board.setup();
   // console.log(p1.x)
-  let button2 = createButton('Dice');
-  
-  button2.position(950, 350);
-  
-  button2.mousePressed(dicePick)
+
 }
 
 function draw(){
 
   let button1 = createButton('Random number');
-  button1.position(800, 350);
+  button1.position(windowWidth-200, 350);
   button1.mousePressed(randomPick);
+
+  let button2 = createButton('Dice');
+  button2.position(windowWidth-400, 350); 
+  button2.mousePressed(dicePick)
+
   board.draw();
   scoreboard.draw();
-  text(randint, 800, 500)
+  text(randint, windowWidth-200, 500)
   header.draw();
   image(image1,p1.x*120+400,p1.y*120 + 30,50,50)
   image(image2,p2.x*120+40+400,p2.y*120 + 30,30,60)
@@ -58,7 +59,7 @@ function keyPressed(){
 
 function randomPick() {
   let button = createButton('Pick random number');
-  button.position(800, 400);
+  button.position(windowWidth-200, 400);
   button.mousePressed(pickRandom);
 }
 function dicePick() {
