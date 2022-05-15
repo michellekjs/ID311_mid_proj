@@ -30,6 +30,10 @@ class Cells {
       fill(254,248,142)
       rect(this.px * 120+ 400, this.py * 120+20, 120, 120)
     }
+    else if (this.game == "spaceship") {
+      fill(254,0,142)
+      rect(this.px * 120+ 400, this.py * 120+20, 120, 120)
+    }
   }
 }
 
@@ -42,7 +46,7 @@ class Board {
   }
 
   setup() {
-    let c = createCanvas(windowWidth,windowHeight);
+    createCanvas(windowWidth,windowHeight);
     for (let a=0; a<this.sizex ; a++){
       for (let b=0; b<this.sizey ; b++) {
         const newcell = new Cells(a,b);
@@ -54,7 +58,6 @@ class Board {
     const jumpCell = this.cells.slice(1,).sort(()=>0.5 - Math.random());
     const jumping = jumpCell.slice(0,6);
     for (let cell=0; cell<6 ; cell++) {
-      
       jumping[cell].game = "jump"
     }
     //reverse to certain positions
@@ -68,11 +71,11 @@ class Board {
     //   rcp[cell].game = "rcp" // this is rock scissor paper
     // }
 
-    const spaceship = jumpCell.slice(14,16); 
+    // const spaceship = jumpCell.slice(14,16); 
     // for (let cell=0; cell<6 ; cell++) {
     //   spaceship[cell].game = "spaceship" // this is rock scissor paper
     // }
-
+    this.cells[8].game = "spaceship"
     localStorage.setItem("cells", JSON.stringify(this.cells)); 
   }
 

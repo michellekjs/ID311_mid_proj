@@ -68,7 +68,7 @@ function dicePick() {
 
 function pickRandom() {
   background(255)
-  randint = Math.floor(Math.random()*10)
+  randint = Math.floor(Math.random()*5)
   let turnplayer = p1.current ==true ? p1 : p2;
   if (turnplayer.x + randint > 7) {
     turnplayer.x = turnplayer.x + randint -8;
@@ -82,11 +82,17 @@ function pickRandom() {
     console.log("JIMP")
     turnplayer.y = turnplayer.y + 1
   }
-  if ( cells[turnplayer.x + turnplayer.y*8].game == "reverse") {
+  if ( cells[turnplayer.y + turnplayer.x*8].game == "reverse") {
     // console.log()
     turnplayer.x = turnplayer.x - 1 == -1 ?turnplayer.x +1 : turnplayer.x -1
     turnplayer.y = turnplayer.y-1
   }
+  if ( cells[turnplayer.y + turnplayer.x*8].game == "spaceship") {
+    console.log("HI")
+    window.location.href = "../mini.html"
+  }
+
+  
   console.log(turnplayer.x, turnplayer.y)
 }
 
