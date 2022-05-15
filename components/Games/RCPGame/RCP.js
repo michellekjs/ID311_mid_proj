@@ -1,106 +1,153 @@
-class RCP {
-  constructor() {
-    this.first = "rock"
-  }
-}
+import rock from '../../../assets/rock.png';
+import scissor from '../../../assets/scissor.png';
+import paper from '../../../assets/paper.png';
 
-import ss from '../../../assets/spaceship.png';
-import { RectAreaLight } from 'three';
+let r,s,p,font;
+let arr = [];
+let turn = 0;
+let hand;
 
-let ship, simage, rain, rain2, rain3, rp, font;
-
-class SpaceShip {
-  constructor() {
-    this.px = windowWidth/2,
-    this.py = windowHeight-100,
-    this.score = 0,
-    this.image = simage
-  }
-}
-
-class Rain {
-  constructor(speed) {
-    this.speed = speed,
-    this.length = 3 ,
-    this.y = 0,
-    this.x = 0
-  }
-  setup() {
-    rp = Math.floor(Math.random()*windowWidth)
-    this.x = rp
-  }
-  draw() {
-    this.y = this.speed + this.y
-    fill(250,0,0)
-    if (this.y >windowHeight){
-      this.y = 0
-      this.x =  Math.floor(Math.random()*windowWidth)
-    }
-    else {
-      rect(this.x, this.y, 20, 100)
-    }
-  }
-}
-
-
-
-function preload() {
-  simage= loadImage(ss)
+function preload(){
   font = loadFont('../assets/fonts/coolveticarg.otf');
 }
+
 function setup() {
-  ship = new SpaceShip;
-  rain = new Rain(10);
-  rain2 = new Rain(15);
-  rain3 = new Rain(20)
+  r = loadImage(rock)
+  s = loadImage(scissor)
+  p = loadImage(paper)
+
+  arr.push(r)
+  arr.push(s)
+  arr.push(p)
+  setInterval(changeImage, 100)
+
+  console.log(JSON.parse(localStorage.getItem('player1')))
 }
 
 function draw() {
   createCanvas(windowWidth, windowHeight)
-  background(0)
-  if (keyIsDown(RIGHT_ARROW)){
-    ship.px = ship.px + 30;
-  }
-  if (keyIsDown(LEFT_ARROW)) {
-    ship.px = ship.px -30;
-  }
-  if (ship.px > windowWidth){
-    ship.px = windowWidth
-  }
-  if (ship.py <0){
-    ship.px = 0
-  }
-  image(ship.image,ship.px, ship.py, 50, 50)
-  rain.draw();
-  rain2.draw();
-  rain3.draw();
+  background(0);
+  textFont(font);
+  fill(255)
+  textSize(60)
+  text("MINI GAME  - ROCK SCISSOR PAPER", 40, 100)
+  textSize(30)
+  text("Click one of ROCK, SCISSOR, PAPER on the right side!", 40, 200)
+  text("Once you click, the winner and loser will be determined ", 40, 250)
 
-  if ((((ship.px+50 > rain.x) & (rain.x > ship.px)) & (((ship.py+50 > rain.y) & (rain.y > ship.py)))) ||(((ship.px+50 > rain2.x) & (rain2.x > ship.px)) & (((ship.py+50 > rain2.y) & (rain2.y > ship.py)))) || (((ship.px+50 > rain3.x) & (rain3.x > ship.px)) & (((ship.py+50 > rain3.y) & (rain3.y > ship.py))))) {
-    end()
-  }
-}
+  let backGame = createButton('');
+  backGame.style('border', 'none')
+  backGame.style('background', 'none')
+  backGame.style('width', '100px')
+  backGame.style('height', '50px')
+  backGame.position(700, 600);
+  backGame.mousePressed(() => {
+    window.location.href = "../game.html"
+  });
 
-function end() {
-  noLoop()
-  createCanvas(windowWidth, windowHeight)
-  background(100);
-  textSize(40);
-  fill(200,0,0)
-  textFont(font)
-  text("GAME OVER!", windowWidth/2-100, windowHeight/2)
-  let button1 = createButton('Back to board');
+  image(arr[turn], windowWidth/3, windowHeight/2-100, 200, 200)
+
+  image(r, windowWidth*2/3, windowHeight/2-400, 200, 200)
+  let button1 = createButton('');
+  button1.style('border', 'none')
   button1.style('background', 'none')
-  button1.style('border-style', 'none')
+  button1.style('width', '200px')
+  button1.style('height', '200px')
+  button1.position(windowWidth*2/3, windowHeight/2-400);
+  button1.mousePressed(() => {
+    hand = r
+    textSize(100)
+    fill(64,180,255)
+    let t = whoWins(arr[turn], hand)
+    text(t, 500, 500)
+    backGame.style('background', 'rgb(64,180,255)')
+    noLoop()
+  });
 
-  button1.position(windowWidth/2-20, windowHeight/2 + 40);
-  button1.mousePressed(backtoBoard)
+  image(s, windowWidth*2/3, windowHeight/2-100, 200, 200)
+  let button2 = createButton('');
+  button2.style('border', 'none')
+  button2.style('background', 'none')
+  button2.style('width', '200px')
+  button2.style('height', '200px')
+  button2.position(windowWidth*2/3, windowHeight/2-100);
+  button2.mousePressed(() => {
+    hand = s
+    textSize(100)
+    fill(64,180,255)
+    let t = whoWins(arr[turn], hand)
+    text(t, 500, 500)
+    backGame.style('background', 'rgb(64,180,255)')
+    noLoop() 
+  });
+
+  image(p, windowWidth*2/3, windowHeight/2+200, 200, 200)
+  let button3 = createButton('');
+  button3.style('border', 'none')
+  button3.style('background', 'none')
+  button3.style('width', '200px')
+  button3.style('height', '200px')
+  button3.position(windowWidth*2/3, windowHeight/2+200);
+  button3.mousePressed(() => {
+    hand = p
+    textSize(100)
+    fill(64,180,255)
+    let t = whoWins(arr[turn], hand)
+    text(t, 500, 500)
+    backGame.style('background', 'rgb(64,180,255)')
+    noLoop()
+  });
+
 }
 
 
-function backtoBoard(){
-  window.location.href = "../game.html"
+function changeImage() {
+  turn = turn + 1;
+  if (turn > 2) {
+    turn = 0
+  }
 }
+
+function whoWins(a,b) {
+  if (a==r) {
+    if (b==r) {
+      return ("It is a TIE!")
+    } 
+    else if (b==s) {
+      return ("YOU LOSE")
+    }
+    else {
+      return ("YOU WIN")
+    }
+  } 
+  else if (a==s) {
+    if (b==s) {
+      return ("It is a TIE!")
+    } 
+    else if (b==r) {
+      return ("YOU LOSE")
+    }
+    else {
+      return ("YOU WIN")
+    }
+  } 
+  else {
+    if (b==p) {
+      return ("It is a TIE!")
+    } 
+    else if (b==r) {
+      return ("YOU LOSE")
+    }
+    else {
+      return ("YOU WIN")
+    }
+  } 
+}
+
 
 window.preload = preload
-window.setup = setup
+window.setup  = setup
 window.draw = draw
+
+
+

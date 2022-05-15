@@ -2,7 +2,6 @@ let button,p1txt, p2txt,player1, player2, p1name, p2name, image1, image2, switch
 import Cat from '../assets/cat.png';
 import Dog from '../assets/dog.png';
 import Switch from '../assets/icons/switch.png';
-import { RectAreaLight } from 'three';
 
 
 let font;

@@ -24,16 +24,18 @@ class Cells {
     this.setup()
     if (this.game == "jump") {
       fill(254,192,142)
-      rect(this.px * 120+ 400, this.py * 120+ 20, 120, 120)
+      
     }
     else if (this.game == "reverse") {
       fill(254,248,142)
-      rect(this.px * 120+ 400, this.py * 120+20, 120, 120)
     }
     else if (this.game == "spaceship") {
       fill(254,0,142)
-      rect(this.px * 120+ 400, this.py * 120+20, 120, 120)
     }
+    else if (this.game == "rcp") {
+      fill(0,100,142)
+    }
+    rect(this.px * 120+ 400, this.py * 120+ 20, 120, 120)
   }
 }
 
@@ -65,18 +67,11 @@ class Board {
     for (let cell=0; cell<6 ; cell++) {
       reverse[cell].game = "reverse"
     }
-
-    const rcp = jumpCell.slice(12,14); 
-    // for (let cell=0; cell<6 ; cell++) {
-    //   rcp[cell].game = "rcp" // this is rock scissor paper
-    // }
-
-    // const spaceship = jumpCell.slice(14,16); 
-    // for (let cell=0; cell<6 ; cell++) {
-    //   spaceship[cell].game = "spaceship" // this is rock scissor paper
-    // }
+    
     this.cells[8].game = "spaceship"
+    this.cells[16].game = "rcp"
     localStorage.setItem("cells", JSON.stringify(this.cells)); 
+
   }
 
   draw() {

@@ -1,5 +1,4 @@
 import ss from '../../../assets/spaceship.png';
-import { RectAreaLight } from 'three';
 
 let ship, simage, rain, rain2, rain3, rp, font;
 

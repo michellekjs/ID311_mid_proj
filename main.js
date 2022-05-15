@@ -36,9 +36,9 @@ function draw(){
   button1.position(windowWidth-200, 350);
   button1.mousePressed(randomPick);
 
-  let button2 = createButton('Dice');
-  button2.position(windowWidth-400, 350); 
-  button2.mousePressed(dicePick)
+  // let button2 = createButton('Dice');
+  // button2.position(windowWidth-400, 350); 
+  // button2.mousePressed(dicePick)
 
   board.draw();
   scoreboard.draw();
@@ -62,9 +62,9 @@ function randomPick() {
   button.position(windowWidth-200, 400);
   button.mousePressed(pickRandom);
 }
-function dicePick() {
-  // box(30)
-}
+// function dicePick() {
+//   // box(30)
+// }
 
 function pickRandom() {
   background(255)
@@ -77,23 +77,20 @@ function pickRandom() {
   else {
     turnplayer.x = turnplayer.x + randint
   }
-// cell.px + cell.py*8
   if ( cells[turnplayer.x + turnplayer.y*8].game == "jump") {
     console.log("JIMP")
     turnplayer.y = turnplayer.y + 1
   }
   if ( cells[turnplayer.y + turnplayer.x*8].game == "reverse") {
-    // console.log()
     turnplayer.x = turnplayer.x - 1 == -1 ?turnplayer.x +1 : turnplayer.x -1
     turnplayer.y = turnplayer.y-1
   }
   if ( cells[turnplayer.y + turnplayer.x*8].game == "spaceship") {
-    console.log("HI")
     window.location.href = "../mini.html"
   }
-
-  
-  console.log(turnplayer.x, turnplayer.y)
+  if ( cells[turnplayer.y + turnplayer.x*8].game == "rcp") {
+    window.location.href = "../rcp.html"
+  }
 }
 
 
