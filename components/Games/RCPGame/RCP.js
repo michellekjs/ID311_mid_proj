@@ -1,11 +1,13 @@
 import rock from '../../../assets/rock.png';
 import scissor from '../../../assets/scissor.png';
 import paper from '../../../assets/paper.png';
+import { StreamCopyUsage } from 'three';
 
-let r,s,p,font;
+let r,s,p,font, p1,p2,cp;
 let arr = [];
 let turn = 0;
-let hand, t;
+let hand, t, inter;
+
 
 function preload(){
   font = loadFont('../assets/fonts/coolveticarg.otf');
@@ -19,7 +21,7 @@ function setup() {
   arr.push(r)
   arr.push(s)
   arr.push(p)
-  setInterval(changeImage, 100)
+  inter = setInterval(changeImage, 100)
 
 }
 
@@ -43,7 +45,7 @@ function draw() {
   backGame.mousePressed(() => {
     window.location.href = "../game.html"
   });
-  t = whoWins(arr[turn], hand)
+
   backGame.style('background', 'rgb(64,180,255)')
 
   image(arr[turn], windowWidth/3, windowHeight/2-100, 200, 200)
@@ -56,12 +58,16 @@ function draw() {
   button1.style('height', '200px')
   button1.position(windowWidth*2/3, windowHeight/2-400);
   button1.mousePressed(() => {
-    noLoop();
+    clearInterval(inter)
+    end();
     hand = r
+    console.log(arr[turn], hand)
+    whoWins(arr[turn], hand);
     textSize(100)
     fill(64,180,255)
     text(t, 500, 500)
-    end()
+    
+    // end()
   });
 
   image(s, windowWidth*2/3, windowHeight/2-100, 200, 200)
@@ -72,12 +78,16 @@ function draw() {
   button2.style('height', '200px')
   button2.position(windowWidth*2/3, windowHeight/2-100);
   button2.mousePressed(() => {
-    noLoop() 
+    end() 
+    clearInterval(inter)
     hand = s
+    console.log(arr[turn], hand)
+    whoWins(arr[turn], hand);
     textSize(100)
     fill(64,180,255)
     text(t, 500, 500)
-    end()
+    
+    // end()
   });
 
   image(p, windowWidth*2/3, windowHeight/2+200, 200, 200)
@@ -88,20 +98,22 @@ function draw() {
   button3.style('height', '200px')
   button3.position(windowWidth*2/3, windowHeight/2+200);
   button3.mousePressed(() => {
-    noLoop();
+    end();
+    clearInterval(inter)
     hand = p
+    console.log(arr[turn], hand)
+    whoWins(arr[turn], hand);
     textSize(100)
     fill(64,180,255)
     text(t, 500, 500)
-    end()
+    
+    // end()
   });
 }
 
 function end() {
-  updateScore();
+  noLoop();
 }
-
-
 function changeImage() {
   turn = turn + 1;
   if (turn > 2) {
@@ -110,86 +122,94 @@ function changeImage() {
 }
 
 function whoWins(a,b) {
+  p1 = JSON.parse(localStorage.getItem("player1"))
+  p2 = JSON.parse(localStorage.getItem("player2"))
+  cp = p1.current == true ? p1 : p2;
+
   if (a==r) {
     if (b==r) {
-      return ("It is a TIE!")
+      tie()
+      t= ("It is a TIE!")
     } 
     else if (b==s) {
-      return ("YOU LOSE")
+      lose()
+      t= ("YOU LOSE")
     }
     else {
-      return ("YOU WIN")
+      win()
+      t=  ("YOU WIN")
     }
   } 
   else if (a==s) {
     if (b==s) {
-      return ("It is a TIE!")
+      tie()
+      t =  ("It is a TIE!")
     } 
     else if (b==r) {
-      return ("YOU LOSE")
+      win()
+      t= ("YOU WIN")
     }
     else {
-      return ("YOU WIN")
+      lose()
+      t= ("YOU LOSE")
     }
   } 
   else {
     if (b==p) {
-      return ("It is a TIE!")
+      tie()
+      t= ("It is a TIE!")
     } 
     else if (b==r) {
-      return ("YOU LOSE")
+      lose()
+      t =  ("YOU LOSE")
     }
     else {
-      return ("YOU WIN")
-    }
-  } 
-}
-
-function updateScore() {
-
-  let p1 = JSON.parse(localStorage.getItem("player1"))
-  let p2 = JSON.parse(localStorage.getItem("player2"))
-  let cp = p1.current == true ? p1 : p2;
-
-
-  if (t=="YOU LOSE") {
-    if (cp.x == (0 || 1)) {
-      cp.x = 7-cp.x
-      cp.y -=1
-    }
-    else {
-      cp.x -=1
+      win()
+      t =  ("YOU WIN")
     }
   }
+  
+  localStorage.setItem("player1", JSON.stringify(p1))
+  localStorage.setItem("player2", JSON.stringify(p2)) 
+}
 
-  else if (t=="YOU WIN") {
-    if (cp.x ==7) {
-      cp.x = 0
-      cp.y +=1
-    }
-    else {
-      cp.x +=1
-    }
+
+
+function lose() {
+  if (cp.x == (0 || 1)) {
+    cp.x = 6 + cp.x
+    cp.y -=1
   }
   else {
-    if (cp.x == 0) {
-      cp.x = 7
-      cp.y -=1
-    }
-    else {
-      cp.x -=1
-    }
+    cp.x = cp.x - 2
   }
-
-  localStorage.setItem("player1", JSON.stringify(p1))
-  localStorage.setItem("player2", JSON.stringify(p2))
 }
 
+function win() {
+  if (cp.x ==7) {
+      console.log("WON")
+      cp.x = 0
+      cp.y = cp.y + 1
+    }
+    else {
+      cp.x =  cp.x + 1
+    }
+}
+function tie(){
+  if (cp.x == 0) {
+    cp.x = 7
+    cp.y = cp.y -1
+  }
+  else {
+    console.log(cp.x)
+    cp.x  = cp.x -1
+  }
+}
 
+window.end = end
 window.preload = preload
 window.setup  = setup
 window.draw = draw
-window.end = end
 
 
 

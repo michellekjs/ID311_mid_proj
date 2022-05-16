@@ -108,6 +108,10 @@ function pickRandom() {
     turnplayer.x = turnplayer.x - 1 == -1 ?turnplayer.x +1 : turnplayer.x -1
     turnplayer.y = turnplayer.y-1
   }
+  
+  localStorage.setItem("player1", JSON.stringify(p1));
+  localStorage.setItem("player2", JSON.stringify(p2));
+
   if ( cells[turnplayer.x + turnplayer.y*8].game == "spaceship") {
     window.location.href = "../mini.html"
   }
