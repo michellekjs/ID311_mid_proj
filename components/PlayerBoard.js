@@ -18,8 +18,9 @@ class PlayerBoard{
   }
 
   draw(){
-    this.p1.score = this.p1.x + this.p1.y;
-    this.p2.score = this.p2.x + this.p2.y;
+    this.p1.score = this.p1.x + this.p1.y*8;
+    this.p2.score = this.p2.x  + this.p2.y*8;
+    console.log(this.p1.x, this.p1.y, this.p2.x, this.p2.y)
 
     textSize(50);
     textFont(font);

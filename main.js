@@ -35,7 +35,7 @@ function draw(){
   button1.style('border', 'none');
   button1.style('width', '300px');
   button1.style('height', '70px');
-  button1.style('font-size', '50px')
+  button1.style('font-size', '30px')
   button1.style('background-color', 'rgb(168,215,241)')
   button1.style('border-radius', '20px');
 
@@ -90,6 +90,10 @@ function pickRandom() {
   background(255)
   randint = Math.floor(Math.random()*5)
   let turnplayer = p1.current ==true ? p1 : p2;
+  if(turnplayer.score >= 63) {
+    noLoop()
+    window.location.href = "../gameover.html"
+  }
   if (turnplayer.x + randint > 7) {
     turnplayer.x = turnplayer.x + randint -8;
     turnplayer.y = turnplayer.y + 1;
@@ -110,6 +114,7 @@ function pickRandom() {
   if ( cells[turnplayer.x + turnplayer.y*8].game == "rcp") {
     window.location.href = "../rcp.html"
   }
+
 }
 
 
