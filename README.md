@@ -72,10 +72,38 @@ class Board's constructor is like the following.
 Along the x-axis and the y-axis , the cells are rendered to form a board(inside the setup() function). Then I set the cells' game to "jump", "reverse", "spaceship", "rcp". 
 
 ### components/PlayerBoard.js
-In this file, the score of the players are displayed. The player's score is the total amount of forward movement that the player made. Pressing 
+In this file, the score of the players are displayed. The player's score is the total amount of forward movement that the player made. Getting the player information from the localStorage, we use the stored player's name and score. The current player's text will be displayed in blue color, and this is determined using the player's class current constructor. 
+
+I exported the defined PlayerBoard class to use it in the _main.js_ file. In the draw() function, according to whose this.current is value "true", that player's score text is blue. 
+```js
+ if (this.p1.current == true) {
+    //code of text rendering 
+  }
+  else {
+   //...
+  }
+```
+
 ### components/Header.js
+Header is for the UI of the game. It contains the title of the game, the author/ rules/ setting of the game. There is no interaction in this part, only simple rendering of the scene. Each of the letters in the Header are buttons created by createButton function. 
+
+```js
+ let button = createButton('Author');
+```
+
 ### components/Games/RCP.js
+I downloaded images from the Internet with illustration of rock scissor paper hands. 
+
 ### components/Games/SpaceShip.js
+There are two classes defined in this file. 
+_class Spaceship_ is the class to contain information and render the spaceship. The spaceship's position is stored in teh constructor variables  **px** and **py**.  _class Rain_ is where the red rays coming toward teh spaceship is defined. We can set the speed of the rays using the constructor **speed**. The form of the ray is a thin rectangle. If the spaceship lies within the range of the ray , you will lose the game and the mini-game will be over. 
+'''js
+  rain.draw();
+  rain2.draw();
+  rain3.draw();
+
+'''
+The rays in my code are written like the following. It seems like there are only 3 rays, but it would be continuously rendered when it reaches the ground(the position where the spaceship is)
 ### ./Main.js
 
 

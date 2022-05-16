@@ -60,7 +60,7 @@ function draw() {
   if (ship.px > windowWidth){
     ship.px = windowWidth
   }
-  if (ship.py <0){
+  if (ship.px <0){
     ship.px = 0
   }
   image(ship.image,ship.px, ship.py, 50, 50)
