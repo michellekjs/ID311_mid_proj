@@ -23,11 +23,15 @@ In the following order, the codes were built. There are explanations about what 
 
 
 ### Starting page
+<img src="./assets/readme/6.png"  style="height: 200px; width:400px;"/>
+
 The starting page is written in the code _Introduction.js_ and _index.html_ .
 The function of the starting page is to get the player's name as inputs and use them to use in the main game. Along with the name input, the players are displayed on the board game with the characters they chose in the introduction page. If the player presses the 'switch' icon in the center of the screen, each of the players will have switched characters from the default characters. 
 
 
 ### Board page
+<img src="./assets/readme/7.png"  style="height: 200px; width:400px;"/>
+
 The board page is written in _Board.js_ , _main.js_, _PlayerBoard.js_, _Header.js_ . 
 The board page is the main screen of the game. The characters that match each of the player's choice at the introduction site moves along the board. Clicking the "Random number" button, a random number in range 0 to 4 is created and the character moves that amount. There are cells where there are minigames or jumps to other cells. When one person finishes their turn, switching to the second player is done by pressing the **"c"** on the keyboard. The game continues and when one of the player reaches the end of the boardgame, the game is over. 
 
@@ -36,12 +40,18 @@ The board page is the main screen of the game. The characters that match each of
 Games are written in _Games_ folder. There are 3 games which are each written in folders _RCPGame, SpaceshipGame_. 
 
 #### RCP Game
+<img src="./assets/readme/12.png"  style="height: 200px; width:400px;"/>
+
 RCP game is rock-scissors-papers. The rock, scissor, paper are randomly chosen at the same time the player chooses rock/scissor/paper. According to the randomly picked npc's rock/scissor/paper, and the player's choice, the winner is determined. Like the spaceship game, the player gets advantage/disadvantage by the result.
 
 #### Spaceship Game
+<img src="./assets/readme/11.png"  style="height: 200px; width:400px;"/>
+
 Spaceship game is where the player controls the position of the spaceship using the arrow keys of the keyboard. The player has to avoid the incoming red rays and last long. The longer they last, they will earn additional jumps to another board cell. When the player is hit by the ray or if certain amount of time passes, the game will end with the "Game Over" sign and the player can return to the boardgame main page. If the player does not last until their score becomes 1000, he will be moved to the previous cell. If the player does last, he will be moved to the next cell.
 
 ### Game Over 
+<img src="./assets/readme/8.png"  style="height: 200px; width:400px;"/>
+
 Game over page is written in _GameOver.js_ and _gameover.html_ files. It gets information about who is the winner of the game and provides a button to restart the game
 
 # Organization of the code & code explanation
