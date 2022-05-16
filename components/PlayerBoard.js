@@ -25,7 +25,6 @@ class PlayerBoard{
     textFont(font);
     if (this.p1.current == true) {
       fill(95,116,202);
-      // console.log(this.p1)
       text(this.p1.name + 'Score:' + this.p1.score,windowWidth-500 ,50, 30)
       fill(100,100,100);
       text(this.p2.name + 'Score:'+ this.p2.score,windowWidth-500 ,100, 30)

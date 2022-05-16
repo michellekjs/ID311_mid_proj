@@ -67,8 +67,13 @@ class Board {
       this.cells[reversearr[cell]].game = "reverse"
     }
     
-    this.cells[1].game = "spaceship"
-    this.cells[2].game = "rcp"
+    this.cells[2].game = "spaceship"
+    this.cells[23].game = "spaceship"
+    this.cells[41].game = "spaceship"
+    this.cells[6].game = "rcp"
+    this.cells[25].game = "rcp"
+    this.cells[29].game = "rcp"
+    this.cells[39].game = "rcp"
     localStorage.setItem("cells", JSON.stringify(this.cells)); 
 
   }

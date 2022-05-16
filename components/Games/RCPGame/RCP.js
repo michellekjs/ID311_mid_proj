@@ -5,7 +5,7 @@ import paper from '../../../assets/paper.png';
 let r,s,p,font;
 let arr = [];
 let turn = 0;
-let hand;
+let hand, t;
 
 function preload(){
   font = loadFont('../assets/fonts/coolveticarg.otf');
@@ -21,7 +21,6 @@ function setup() {
   arr.push(p)
   setInterval(changeImage, 100)
 
-  console.log(JSON.parse(localStorage.getItem('player1')))
 }
 
 function draw() {
@@ -40,10 +39,12 @@ function draw() {
   backGame.style('background', 'none')
   backGame.style('width', '100px')
   backGame.style('height', '50px')
-  backGame.position(700, 600);
+  backGame.position(windowWidth -200, 40);
   backGame.mousePressed(() => {
     window.location.href = "../game.html"
   });
+  t = whoWins(arr[turn], hand)
+  backGame.style('background', 'rgb(64,180,255)')
 
   image(arr[turn], windowWidth/3, windowHeight/2-100, 200, 200)
 
@@ -55,13 +56,12 @@ function draw() {
   button1.style('height', '200px')
   button1.position(windowWidth*2/3, windowHeight/2-400);
   button1.mousePressed(() => {
+    noLoop();
     hand = r
     textSize(100)
     fill(64,180,255)
-    let t = whoWins(arr[turn], hand)
     text(t, 500, 500)
-    backGame.style('background', 'rgb(64,180,255)')
-    noLoop()
+    end()
   });
 
   image(s, windowWidth*2/3, windowHeight/2-100, 200, 200)
@@ -72,13 +72,12 @@ function draw() {
   button2.style('height', '200px')
   button2.position(windowWidth*2/3, windowHeight/2-100);
   button2.mousePressed(() => {
+    noLoop() 
     hand = s
     textSize(100)
     fill(64,180,255)
-    let t = whoWins(arr[turn], hand)
     text(t, 500, 500)
-    backGame.style('background', 'rgb(64,180,255)')
-    noLoop() 
+    end()
   });
 
   image(p, windowWidth*2/3, windowHeight/2+200, 200, 200)
@@ -89,15 +88,17 @@ function draw() {
   button3.style('height', '200px')
   button3.position(windowWidth*2/3, windowHeight/2+200);
   button3.mousePressed(() => {
+    noLoop();
     hand = p
     textSize(100)
     fill(64,180,255)
-    let t = whoWins(arr[turn], hand)
     text(t, 500, 500)
-    backGame.style('background', 'rgb(64,180,255)')
-    noLoop()
+    end()
   });
+}
 
+function end() {
+  updateScore();
 }
 
 
@@ -144,10 +145,51 @@ function whoWins(a,b) {
   } 
 }
 
+function updateScore() {
+
+  let p1 = JSON.parse(localStorage.getItem("player1"))
+  let p2 = JSON.parse(localStorage.getItem("player2"))
+  let cp = p1.current == true ? p1 : p2;
+
+
+  if (t=="YOU LOSE") {
+    if (cp.x == (0 || 1)) {
+      cp.x = 7-cp.x
+      cp.y -=1
+    }
+    else {
+      cp.x -=1
+    }
+  }
+
+  else if (t=="YOU WIN") {
+    if (cp.x ==7) {
+      cp.x = 0
+      cp.y +=1
+    }
+    else {
+      cp.x +=1
+    }
+  }
+  else {
+    if (cp.x == 0) {
+      cp.x = 7
+      cp.y -=1
+    }
+    else {
+      cp.x -=1
+    }
+  }
+
+  localStorage.setItem("player1", JSON.stringify(p1))
+  localStorage.setItem("player2", JSON.stringify(p2))
+}
+
 
 window.preload = preload
 window.setup  = setup
 window.draw = draw
+window.end = end
 
 
 

@@ -29,14 +29,13 @@ function setup() {
 }
 
 function draw(){
-  console.log(p1)
   let button1 = createButton('Random number');
   button1.position(windowWidth-500, 350);
   button1.mousePressed(pickRandom);
   button1.style('border', 'none');
   button1.style('width', '300px');
   button1.style('height', '70px');
-  button1.style('font-size', '30px')
+  button1.style('font-size', '50px')
   button1.style('background-color', 'rgb(168,215,241)')
   button1.style('border-radius', '20px');
 
@@ -99,11 +98,9 @@ function pickRandom() {
     turnplayer.x = turnplayer.x + randint
   }
   if ( cells[turnplayer.x + turnplayer.y*8].game == "jump") {
-    console.log("JIMP")
     turnplayer.y = turnplayer.y + 1
   }
   if ( cells[turnplayer.x + turnplayer.y*8].game == "reverse") {
-    console.log("reverse")
     turnplayer.x = turnplayer.x - 1 == -1 ?turnplayer.x +1 : turnplayer.x -1
     turnplayer.y = turnplayer.y-1
   }
