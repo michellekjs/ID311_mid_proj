@@ -5,7 +5,7 @@ Email : michellekjs@kaist.ac.kr
 GIT repository : http://git.prototyping.id/20180517/mid_project.git
 
 
-# Description of the Game
+# Random Board Game
 ## Summary
 This game is a board game that was inspired by the snake ladder game. The first person to reach the end of the board wins the game. The board game's each plates have hidden mini-games or advantage/disadvantages.
 
@@ -97,13 +97,14 @@ I downloaded images from the Internet with illustration of rock scissor paper ha
 ### components/Games/SpaceShip.js
 There are two classes defined in this file. 
 _class Spaceship_ is the class to contain information and render the spaceship. The spaceship's position is stored in teh constructor variables  **px** and **py**.  _class Rain_ is where the red rays coming toward teh spaceship is defined. We can set the speed of the rays using the constructor **speed**. The form of the ray is a thin rectangle. If the spaceship lies within the range of the ray , you will lose the game and the mini-game will be over. 
+
 '''js
   rain.draw();
   rain2.draw();
   rain3.draw();
-
 '''
 The rays in my code are written like the following. It seems like there are only 3 rays, but it would be continuously rendered when it reaches the ground(the position where the spaceship is)
+
 ### ./Main.js
 
 
