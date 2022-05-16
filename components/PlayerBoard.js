@@ -32,9 +32,9 @@ class PlayerBoard{
     }
     else {
       fill(100,100,100);
-      text(this.p1.name + 'Score:' + this.p1.score,windowWidth-400 ,50, 30)
+      text(this.p1.name + 'Score:' + this.p1.score,windowWidth-500 ,50, 30)
       fill(95,116,202);
-      text(this.p2.name + 'Score:'+ this.p2.score,windowWidth-400 ,80, 30)
+      text(this.p2.name + 'Score:'+ this.p2.score,windowWidth-500 ,100, 30)
     }
   }
 } 

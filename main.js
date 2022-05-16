@@ -74,18 +74,9 @@ function keyPressed(){
   if (key == 'c') {
     scoreboard.p1.current = !scoreboard.p1.current
     scoreboard.p2.current = !scoreboard.p2.current
-    // console.log(scoreboard.p1.current,scoreboard.p2.current )
   }
 }
 
-// function randomPick() {
-//   let button = createButton('Pick random number');
-//   button.position(windowWidth-200, 400);
-//   button.mousePressed(pickRandom);
-// }
-// function dicePick() {
-//   // box(30)
-// }
 
 function resetScore() {
   p1.x = 0
