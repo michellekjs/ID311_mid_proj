@@ -129,7 +129,7 @@ I exported the defined PlayerBoard class to use it in the _main.js_ file. In the
 ```
 
 ### components/Header.js
-Header is for the UI of the game. It contains the title of the game, the author/ rules/ setting of the game. There is no interaction in this part, only simple rendering of the scene. Each of the letters in the Header are buttons created by createButton function. 
+Header is for the UI of the game. It contains the title of the game,and the author. There is no interaction in this part, only simple rendering of the scene. Each of the letters in the Header are buttons created by createButton function. 
 
 ```js
  let button = createButton('Author');
