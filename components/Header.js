@@ -23,12 +23,6 @@ class Header {
     button2.style('color', 'white')
     button2.style('font-size', '24px')
 
-    let button3 = createButton('Settings');
-    button3.position(30, 500);
-    button3.style('background','none')
-    button3.style('border', 'none')
-    button3.style('color', 'white')
-    button3.style('font-size', '24px')
   }
 }
 
