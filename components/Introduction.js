@@ -85,10 +85,10 @@ function draw(){
   image(image1,windowWidth*2/3-50,450,150,200)
 
   textSize(30)
-  text("cat", windowWidth/3, 400)
+  text("dog", windowWidth/3, 400)
   image(image2,windowWidth/3-50,450,100,200)
 
-  text("dog", windowWidth*2/3, 400)
+  text("cat", windowWidth*2/3, 400)
   text(p1txt, windowWidth/3, 200)
   text(p2txt, windowWidth*2/3, 200)
 

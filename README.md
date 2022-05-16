@@ -1,6 +1,9 @@
 Name: 20180517
+
 Email : michellekjs@kaist.ac.kr
+
 GIT repository : http://git.prototyping.id/20180517/mid_project.git
+
 
 ## Description of the Game
 ### Summary

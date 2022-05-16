@@ -3,14 +3,14 @@ import { PlayerBoard } from './components/PlayerBoard.js'
 import { Header } from './components/Header.js'
 import Cat from './assets/cat.png';
 import Dog from './assets/dog.png';
-import { Box2, RectAreaLight } from 'three';
 
-let p1, p2, scoreboard,board, image1, image2, randint, cells, header;
+let p1, p2, scoreboard,board, image1, image2, randint, cells, header, font;
 
 function preload(){
   image1 = loadImage(Cat)
   image2 = loadImage(Dog)
   cells = JSON.parse(localStorage.getItem('cells'))
+  font = loadFont('../assets/fonts/coolveticarg.otf');
 }
 
 function setup() {
@@ -26,27 +26,48 @@ function setup() {
   header = new Header();
   board = new Board(8,8); 
   board.setup();
-  // console.log(p1.x)
-
 }
 
 function draw(){
-
+  console.log(p1)
   let button1 = createButton('Random number');
-  button1.position(windowWidth-200, 350);
-  button1.mousePressed(randomPick);
+  button1.position(windowWidth-500, 350);
+  button1.mousePressed(pickRandom);
+  button1.style('border', 'none');
+  button1.style('width', '300px');
+  button1.style('height', '70px');
+  button1.style('font-size', '30px')
+  button1.style('background-color', 'rgb(168,215,241)')
+  button1.style('border-radius', '20px');
 
-  // let button2 = createButton('Dice');
-  // button2.position(windowWidth-400, 350); 
-  // button2.mousePressed(dicePick)
+  let button2 = createButton('RESET');
+  button2.position(windowWidth-500, 700); 
+  button2.mousePressed(resetScore);
+  button2.style('border', 'none');
+  button2.style('width', '300px');
+  button2.style('height', '70px');
+  button2.style('font-size', '30px')
+  button2.style('background-color', 'rgb(230,230,230)')
+  button2.style('border-radius', '20px');
+
 
   board.draw();
   scoreboard.draw();
-  text(randint, windowWidth-200, 500)
-  header.draw();
-  image(image1,p1.x*120+400,p1.y*120 + 30,50,50)
-  image(image2,p2.x*120+40+400,p2.y*120 + 30,30,60)
+  textSize(50)
+  text(randint, windowWidth-360, 500)
+  header.draw()
 
+  if (p1.icon == "cat") {
+    image(image2,p1.x*120+400,p1.y*120 + 30,30,60)
+    image(image1,p2.x*120+40+400,p2.y*120 + 30,50, 50)
+  }
+  else {
+    image(image1,p1.x*120+400,p1.y*120 + 30,50,50)
+    image(image2,p2.x*120+40+400,p2.y*120 + 30,30,60)
+  }
+
+  localStorage.setItem("player1", JSON.stringify(p1));
+  localStorage.setItem("player2", JSON.stringify(p2));
 }
 
 function keyPressed(){
@@ -57,14 +78,23 @@ function keyPressed(){
   }
 }
 
-function randomPick() {
-  let button = createButton('Pick random number');
-  button.position(windowWidth-200, 400);
-  button.mousePressed(pickRandom);
-}
+// function randomPick() {
+//   let button = createButton('Pick random number');
+//   button.position(windowWidth-200, 400);
+//   button.mousePressed(pickRandom);
+// }
 // function dicePick() {
 //   // box(30)
 // }
+
+function resetScore() {
+  p1.x = 0
+  p1.y = 0
+  p2.x = 0
+  p2.y = 0
+  localStorage.setItem("player1", JSON.stringify(p1));
+  localStorage.setItem("player2", JSON.stringify(p2));
+}
 
 function pickRandom() {
   background(255)
@@ -81,14 +111,15 @@ function pickRandom() {
     console.log("JIMP")
     turnplayer.y = turnplayer.y + 1
   }
-  if ( cells[turnplayer.y + turnplayer.x*8].game == "reverse") {
+  if ( cells[turnplayer.x + turnplayer.y*8].game == "reverse") {
+    console.log("reverse")
     turnplayer.x = turnplayer.x - 1 == -1 ?turnplayer.x +1 : turnplayer.x -1
     turnplayer.y = turnplayer.y-1
   }
-  if ( cells[turnplayer.y + turnplayer.x*8].game == "spaceship") {
+  if ( cells[turnplayer.x + turnplayer.y*8].game == "spaceship") {
     window.location.href = "../mini.html"
   }
-  if ( cells[turnplayer.y + turnplayer.x*8].game == "rcp") {
+  if ( cells[turnplayer.x + turnplayer.y*8].game == "rcp") {
     window.location.href = "../rcp.html"
   }
 }

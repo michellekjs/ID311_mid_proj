@@ -51,25 +51,24 @@ class Board {
     createCanvas(windowWidth,windowHeight);
     for (let a=0; a<this.sizex ; a++){
       for (let b=0; b<this.sizey ; b++) {
-        const newcell = new Cells(a,b);
+        const newcell = new Cells(b,a);
         this.cells.push(newcell);
         newcell.draw();
       }
     }
     //jumping to certain positions
-    const jumpCell = this.cells.slice(1,).sort(()=>0.5 - Math.random());
-    const jumping = jumpCell.slice(0,6);
-    for (let cell=0; cell<6 ; cell++) {
-      jumping[cell].game = "jump"
+    let jumparr = [10,15,24, 44, 46]
+    let reversearr = [9, 16, 20, 30, 50]
+    for (let cell=0; cell<5 ; cell++) {
+      this.cells[jumparr[cell]].game = "jump"
     }
     //reverse to certain positions
-    const reverse = jumpCell.slice(6,12); 
-    for (let cell=0; cell<6 ; cell++) {
-      reverse[cell].game = "reverse"
+    for (let cell=0; cell<5 ; cell++) {
+      this.cells[reversearr[cell]].game = "reverse"
     }
     
-    this.cells[8].game = "spaceship"
-    this.cells[16].game = "rcp"
+    this.cells[1].game = "spaceship"
+    this.cells[2].game = "rcp"
     localStorage.setItem("cells", JSON.stringify(this.cells)); 
 
   }
@@ -81,4 +80,4 @@ class Board {
   }
 }
 
-export {Board};
+export {Board}; 

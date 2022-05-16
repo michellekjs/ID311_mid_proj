@@ -92,6 +92,7 @@ function end() {
 
 function backtoBoard(){
   window.location.href = "../game.html"
+
 }
 
 window.preload = preload
