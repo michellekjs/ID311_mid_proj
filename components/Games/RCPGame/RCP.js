@@ -36,7 +36,7 @@ function draw() {
   text("Click one of ROCK, SCISSOR, PAPER on the right side!", 40, 200)
   text("Once you click, the winner and loser will be determined ", 40, 250)
 
-  let backGame = createButton('');
+  let backGame = createButton('Back to Main');
   backGame.style('border', 'none')
   backGame.style('background', 'none')
   backGame.style('width', '100px')
@@ -59,14 +59,13 @@ function draw() {
   button1.position(windowWidth*2/3, windowHeight/2-400);
   button1.mousePressed(() => {
     clearInterval(inter)
-    end();
+    noLoop();
     hand = r
     console.log(arr[turn], hand)
     whoWins(arr[turn], hand);
     textSize(100)
     fill(64,180,255)
     text(t, 500, 500)
-    
     // end()
   });
 
@@ -78,7 +77,7 @@ function draw() {
   button2.style('height', '200px')
   button2.position(windowWidth*2/3, windowHeight/2-100);
   button2.mousePressed(() => {
-    end() 
+    noLoop();
     clearInterval(inter)
     hand = s
     console.log(arr[turn], hand)
@@ -98,7 +97,7 @@ function draw() {
   button3.style('height', '200px')
   button3.position(windowWidth*2/3, windowHeight/2+200);
   button3.mousePressed(() => {
-    end();
+    noLoop();
     clearInterval(inter)
     hand = p
     console.log(arr[turn], hand)

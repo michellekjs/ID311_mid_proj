@@ -53,6 +53,7 @@ function draw(){
   board.draw();
   scoreboard.draw();
   textSize(50)
+  fill(100,100,100)
   text(randint, windowWidth-360, 500)
   header.draw()
 
@@ -90,10 +91,13 @@ function pickRandom() {
   background(255)
   randint = Math.floor(Math.random()*5)
   let turnplayer = p1.current ==true ? p1 : p2;
-  if(turnplayer.score >= 63) {
-    noLoop()
+  console.log(turnplayer.score)
+
+  if(turnplayer.score + randint >= 63) {
+    noLoop();
     window.location.href = "../gameover.html"
   }
+
   if (turnplayer.x + randint > 7) {
     turnplayer.x = turnplayer.x + randint -8;
     turnplayer.y = turnplayer.y + 1;
@@ -108,7 +112,7 @@ function pickRandom() {
     turnplayer.x = turnplayer.x - 1 == -1 ?turnplayer.x +1 : turnplayer.x -1
     turnplayer.y = turnplayer.y-1
   }
-  
+
   localStorage.setItem("player1", JSON.stringify(p1));
   localStorage.setItem("player2", JSON.stringify(p2));
 

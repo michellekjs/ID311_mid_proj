@@ -24,7 +24,7 @@ The board page is the main screen of the game. The characters that match each of
 Games are written in _Games_ folder. There are 3 games which are each written in folders _RCPGame, SpaceshipGame_. 
 
 #### RCP Game
-RCP game is rock-scissors-papers. The rock, scissor, paper are randomly chosen at the same time the player chooses rock/scissor/paper. According to the randomly picked npc's rock/scissor/paper, and the player's choice, the winner is determined. Like the spaceship game, the player gets advantage/disadvantage by the result. If it is a tie, the player's position goes back 1 cell. If the player loses, the player goes back 2 cells and if the player wins ,the player will move 1 cell forward.
+RCP game is rock-scissors-papers. The rock, scissor, paper are randomly chosen at the same time the player chooses rock/scissor/paper. According to the randomly picked npc's rock/scissor/paper, and the player's choice, the winner is determined. Like the spaceship game, the player gets advantage/disadvantage by the result.
 
 #### Spaceship Game
 Spaceship game is where the player controls the position of the spaceship using the arrow keys of the keyboard. The player has to avoid the incoming red rays and last long. The longer they last, they will earn additional jumps to another board cell. When the player is hit by the ray or if certain amount of time passes, the game will end with the "Game Over" sign and the player can return to the boardgame main page. If the player does not last until their score becomes 1000, he will be moved to the previous cell. If the player does last, he will be moved to the next cell.
