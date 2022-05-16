@@ -7,9 +7,21 @@ GIT repository : http://git.prototyping.id/20180517/mid_project.git
 
 # Random Board Game
 ## Summary
-This game is a board game that was inspired by the snake ladder game. The first person to reach the end of the board wins the game. The board game's each plates have hidden mini-games or advantage/disadvantages.
+This game is a board game that was inspired by the snake ladder game. The first person to reach the end of the board wins the game. The board game's each plates have hidden mini-games or advantage/disadvantages.\
+
+
 
 ## Structure
+### Image Explanation
+<img src="./assets/readme/3.png"  style="height: 200px; width:400px;"/>
+<img src="./assets/readme/2.png"  style="height: 200px; width:400px;"/>
+<img src="./assets/readme/4.png"  style="height: 200px; width:400px;"/>
+<img src="./assets/readme/5.png"  style="height: 200px; width:400px;"/>
+<img src="./assets/readme/9.png"  style="height: 200px; width:400px;"/>
+
+In the following order, the codes were built. There are explanations about what is written in each of the files in the "//" of each functions
+
+
 ### Starting page
 The starting page is written in the code _Introduction.js_ and _index.html_ .
 The function of the starting page is to get the player's name as inputs and use them to use in the main game. Along with the name input, the players are displayed on the board game with the characters they chose in the introduction page. If the player presses the 'switch' icon in the center of the screen, each of the players will have switched characters from the default characters. 
