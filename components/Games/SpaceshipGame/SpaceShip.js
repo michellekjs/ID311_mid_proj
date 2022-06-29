@@ -1,6 +1,6 @@
 import ss from '../../../assets/spaceship.png';
 
-let ship, simage, rain, rain2, rain3, rp, font, p1, p2, cp;
+let ship, simage, rain, rain2, rain3, rp, font, p1, p2, cp, i;
 
 class SpaceShip {
   constructor() {
@@ -46,7 +46,7 @@ function setup() {
   rain = new Rain(10);
   rain2 = new Rain(15);
   rain3 = new Rain(20)
-  setInterval(updateScore, 100)
+  i = setInterval(updateScore, 100)
 }
 
 function draw() {
@@ -73,13 +73,17 @@ function draw() {
   rain3.draw();
 
   if ((((ship.px+50 > rain.x) & (rain.x > ship.px)) & (((ship.py+50 > rain.y) & (rain.y > ship.py)))) ||(((ship.px+50 > rain2.x) & (rain2.x > ship.px)) & (((ship.py+50 > rain2.y) & (rain2.y > ship.py)))) || (((ship.px+50 > rain3.x) & (rain3.x > ship.px)) & (((ship.py+50 > rain3.y) & (rain3.y > ship.py))))) {
+    noLoop();
+    clearInterval(i)
     end()
   }
 }
 
 function end() {
-  noLoop()
+  noLoop();
+  // clearInterval(i)
   createCanvas(windowWidth, windowHeight)
+  
   background(40);
   textSize(40);
   fill(255,0,0)
